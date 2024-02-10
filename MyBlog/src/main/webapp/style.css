@@ -2,3 +2,13 @@ html,body{
     width: 100vw;
     height: 100vh;
 }
+
+div.album p.card-text{
+    height: 72px;
+    overflow-y: hidden;
+}
+
+div#subscribe div.modal-body button{
+    position: absolute;
+    right: 30px;
+}

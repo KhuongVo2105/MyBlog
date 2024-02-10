@@ -7,19 +7,27 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/signin")
-public class Signin extends HttpServlet {
+@WebServlet(name = "Document", urlPatterns = "/document")
+public class Document extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        getServletContext().getRequestDispatcher("signin.jsp").forward(req, resp);
+        String action = req.getParameter("action");
+        switch (action) {
+            case "load-more":
+                loadMore(req, resp);
+                break;
+        }
+    }
+
+    private void loadMore(HttpServletRequest req, HttpServletResponse resp) {
+        String offset = req.getParameter("offset");
+        int count = (offset == null || offset.isEmpty()) ? 0 : Integer.parseInt(offset);
+
+        // TODO: Load more
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String email = req.getParameter("email");
-        String password = req.getParameter("password");
-
-        // TODO: Validate email and password
 
     }
 }
