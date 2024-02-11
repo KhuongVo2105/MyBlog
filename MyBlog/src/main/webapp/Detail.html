@@ -15,6 +15,9 @@
     <link rel="stylesheet" href="style.css">
     <!--jQuery-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!--TinyMCE-->
+    <script src="https://cdn.tiny.cloud/1/cey9747ernauvj3m12r00l37wtfjwg9qr0e06msscbd9ea95/tinymce/6/tinymce.min.js"
+            referrerpolicy="origin"></script>
 </head>
 <body>
 <div class="container-lg">
@@ -98,11 +101,76 @@
                     lần đầu lên tiếng từ khi bị ung thư... là các tin tức đáng chú ý nhất sáng 11-2. </p>
             </a>
         </div>
+        <div class="col-lg-8 col-12 my-5" id="support-more">
+            <div>
+                <h5 class="border-start border-4 border-danger ps-2">Comment (0)</h5>
+                <form method="post" id="insert-comment" class="border p-3 border-danger rounded-2 my-2">
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" required>
+                        <label for="floatingInput">Email address</label>
+                    </div>
+                    <div class="form-floating">
+                        <textarea class="form-control" placeholder="Leave a comment here"
+                                  id="floatingTextarea2" required></textarea>
+                        <label for="floatingTextarea2">Comments</label>
+                    </div>
+                    <div class="w-100 d-flex justify-content-end mt-2">
+                        <input type="submit" class="btn btn-sm btn-primary" value="Comment">
+                    </div>
+                </form>
+                <div id="order-comment my-2">
+                    <div class="block-comment my-3 position-relative border-top">
+                        <p><b>username</b></p>
+                        <p class="w-75">this is a comment</p>
+                        <div class="position-absolute top-0 end-0 d-flex align-items-center">
+                            <p class="mb-0">11/02/2024 07:54 GMT+7</p>
+                            <input type="hidden" value="1">
+                            <button class="btn btn-sm border-0" type="button">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24">
+                                    <path fill="currentColor"
+                                          d="M2 5.27L3.28 4L20 20.72L18.73 22l-3.08-3.08c-1.15.38-2.37.58-3.65.58c-5 0-9.27-3.11-11-7.5c.69-1.76 1.79-3.31 3.19-4.54zM12 9a3 3 0 0 1 3 3a3 3 0 0 1-.17 1L11 9.17A3 3 0 0 1 12 9m0-4.5c5 0 9.27 3.11 11 7.5a11.79 11.79 0 0 1-4 5.19l-1.42-1.43A9.862 9.862 0 0 0 20.82 12A9.821 9.821 0 0 0 12 6.5c-1.09 0-2.16.18-3.16.5L7.3 5.47c1.44-.62 3.03-.97 4.7-.97M3.18 12A9.821 9.821 0 0 0 12 17.5c.69 0 1.37-.07 2-.21L11.72 15A3.064 3.064 0 0 1 9 12.28L5.6 8.87c-.99.85-1.82 1.91-2.42 3.13"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="block-comment my-3 position-relative border-top">
+                        <p><b>username</b></p>
+                        <p class="w-75">this is a comment</p>
+                        <div class="position-absolute top-0 end-0 d-flex align-items-center">
+                            <p class="mb-0">11/02/2024 07:54 GMT+7</p>
+                            <input type="hidden" value="2">
+                            <button class="btn btn-sm border-0" type="button">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24">
+                                    <path fill="currentColor"
+                                          d="M2 5.27L3.28 4L20 20.72L18.73 22l-3.08-3.08c-1.15.38-2.37.58-3.65.58c-5 0-9.27-3.11-11-7.5c.69-1.76 1.79-3.31 3.19-4.54zM12 9a3 3 0 0 1 3 3a3 3 0 0 1-.17 1L11 9.17A3 3 0 0 1 12 9m0-4.5c5 0 9.27 3.11 11 7.5a11.79 11.79 0 0 1-4 5.19l-1.42-1.43A9.862 9.862 0 0 0 20.82 12A9.821 9.821 0 0 0 12 6.5c-1.09 0-2.16.18-3.16.5L7.3 5.47c1.44-.62 3.03-.97 4.7-.97M3.18 12A9.821 9.821 0 0 0 12 17.5c.69 0 1.37-.07 2-.21L11.72 15A3.064 3.064 0 0 1 9 12.28L5.6 8.87c-.99.85-1.82 1.91-2.42 3.13"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="block-comment my-3 position-relative border-top">
+                        <p><b>username</b></p>
+                        <p class="w-75">this is a comment</p>
+                        <div class="position-absolute top-0 end-0 d-flex align-items-center">
+                            <p class="mb-0">11/02/2024 07:54 GMT+7</p>
+                            <input type="hidden" value="3">
+                            <button class="btn btn-sm border-0" type="button">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24">
+                                    <path fill="currentColor"
+                                          d="M2 5.27L3.28 4L20 20.72L18.73 22l-3.08-3.08c-1.15.38-2.37.58-3.65.58c-5 0-9.27-3.11-11-7.5c.69-1.76 1.79-3.31 3.19-4.54zM12 9a3 3 0 0 1 3 3a3 3 0 0 1-.17 1L11 9.17A3 3 0 0 1 12 9m0-4.5c5 0 9.27 3.11 11 7.5a11.79 11.79 0 0 1-4 5.19l-1.42-1.43A9.862 9.862 0 0 0 20.82 12A9.821 9.821 0 0 0 12 6.5c-1.09 0-2.16.18-3.16.5L7.3 5.47c1.44-.62 3.03-.97 4.7-.97M3.18 12A9.821 9.821 0 0 0 12 17.5c.69 0 1.37-.07 2-.21L11.72 15A3.064 3.064 0 0 1 9 12.28L5.6 8.87c-.99.85-1.82 1.91-2.42 3.13"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <script>
     $(document).ready(function () {
-        //
+        // truncate Title With Tooltip
         $('div#propose a>p.title').each(function () {
             var maxLength = 100; // Số lượng ký tự tối đa
             var text = $(this).text();
@@ -115,12 +183,46 @@
             $(this).attr('data-bs-title', text);
         });
 
+        $('div.block-comment button').click(function () {
+            const content = $(this).closest('div.block-comment').find('input[type=hidden]').val()
+            console.log(content)
+            $.ajax({
+                url: "document",
+                type: "POST",
+                data: {
+                    action: "delete",
+                    content_id: content
+                },
+                success: function (data) {
+
+                },
+                error: function () {
+
+                }
+            })
+        })
+
         // Khởi tạo tooltip
         $('[data-bs-toggle="tooltip"]').tooltip();
     })
 
+    //     Bootstrap
     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
     const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
+    //     TinyMCE
+    tinymce.init({
+        selector: '.tinymce',
+        plugins: 'ai tinycomments mentions anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed permanentpen footnotes advtemplate advtable advcode editimage tableofcontents mergetags powerpaste tinymcespellchecker autocorrect a11ychecker typography inlinecss',
+        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | align lineheight | tinycomments | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+        tinycomments_mode: 'embedded',
+        tinycomments_author: 'Author name',
+        mergetags_list: [
+            {value: 'First.Name', title: 'First Name'},
+            {value: 'Email', title: 'Email'},
+        ],
+        ai_request: (request, respondWith) => respondWith.string(() => Promise.reject("See docs to implement AI Assistant")),
+    });
 </script>
 </body>
 </html>

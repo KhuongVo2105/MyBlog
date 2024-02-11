@@ -40,3 +40,17 @@ div#propose a p{
 div#propose a p:hover {
     color: darkred;
 }
+
+div.block-comment p{
+    margin-bottom: 0;
+}
+
+div.block-comment p:nth-child(2n){
+    margin-left: 15px;
+    color: dimgray;
+    font-size: small;
+}
+
+div.block-comment div>p{
+    font-size: small;
+}
