@@ -16,7 +16,15 @@ public class Document extends HttpServlet {
             case "load-more":
                 loadMore(req, resp);
                 break;
+            case "detail":
+                detail(req, resp);
+                break;
         }
+    }
+
+    private void detail(HttpServletRequest req, HttpServletResponse resp) {
+        String content_id = req.getParameter("content_id");
+        // TODO: Load detail
     }
 
     private void loadMore(HttpServletRequest req, HttpServletResponse resp) {

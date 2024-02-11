@@ -290,10 +290,10 @@
                 offset: countElements()
             },
             success: function (data) {
-$('div#card').append()
+                $('div#card').append()
             },
             error: function () {
-console.error()
+                console.error()
             }
         })
     }
@@ -304,6 +304,20 @@ console.error()
     function view_more() {
         const content_id = $(this).closest('div.card-body').find('input[type=hidden]').val()
         // console.log(content_id)
+        $.ajax({
+            url: "document",
+            type: "GET",
+            data: {
+                action: "detail",
+                content_id: content_id
+            },
+            success: function (data) {
+
+            },
+            error: function () {
+
+            }
+        })
     }
 
     function countElements() {

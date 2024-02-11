@@ -1,14 +1,42 @@
-html,body{
+html, body {
     width: 100vw;
     height: 100vh;
 }
 
-div.album p.card-text{
+div.album p.card-text {
     height: 72px;
     overflow-y: hidden;
 }
 
-div#subscribe div.modal-body button{
+div#subscribe div.modal-body button {
     position: absolute;
     right: 30px;
+}
+
+div.content div.content-img img {
+    width: 100%;
+}
+
+div.content div.content-img p {
+    font-size: small;
+    color: grey;
+}
+
+div#propose a {
+    text-decoration: none;
+}
+
+div#propose a img{
+    width: 100%;
+    height: 100%;
+}
+
+div#propose a p{
+    font-size: small;
+    color: black;
+    text-overflow: ellipsis;
+}
+
+div#propose a p:hover {
+    color: darkred;
 }
