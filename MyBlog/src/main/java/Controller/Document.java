@@ -36,6 +36,17 @@ public class Document extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String action = req.getParameter("action");
+        switch (action) {
+            case "post":
+                post(req, resp);
+                break;
+        }
+    }
 
+    private void post(HttpServletRequest req, HttpServletResponse resp) {
+        String content = req.getParameter("content");
+        // TODO: Post
+        System.out.println("content: " + content);
     }
 }

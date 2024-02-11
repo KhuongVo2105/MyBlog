@@ -19,6 +19,13 @@
       </list>
     </option>
   </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
 }</component>
@@ -33,6 +40,7 @@
     &quot;Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Smart Tomcat.MyBlog.executor&quot;: &quot;Run&quot;,
     &quot;last_opened_file_path&quot;: &quot;/home/khuongvo/Documents/Git/MyBlog/MyBlog/MyBlog/src/main/resources&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -50,6 +58,31 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="MyBlog" type="com.poratu.idea.plugins.tomcat">
+      <predefined_log_file enabled="true" id="Tomcat Localhost Log" />
+      <predefined_log_file enabled="true" id="Tomcat Access Log" />
+      <predefined_log_file id="Tomcat Catalina Log" />
+      <predefined_log_file id="Tomcat Manager Log" />
+      <predefined_log_file id="Tomcat Host Manager Log" />
+      <option name="catalinaBase" value="$USER_HOME$/.SmartTomcat/MyBlog/MyBlog" />
+      <option name="contextPath" value="/MyBlog" />
+      <option name="docBase" value="$PROJECT_DIR$/src/main/webapp" />
+      <option name="extraClassPath" value="" />
+      <option name="tomcatInfo">
+        <TomcatInfo>
+          <option name="name" value="Apache Tomcat/8.5.93" />
+          <option name="path" value="$PROJECT_DIR$/../../../../apache-tomcat-8.5.93" />
+          <option name="version" value="8.5.93.0" />
+        </TomcatInfo>
+      </option>
+      <option name="vmOptions" value="" />
+      <module name="MyBlog" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -70,7 +103,8 @@
       <workItem from="1707496251176" duration="2256000" />
       <workItem from="1707557432444" duration="5676000" />
       <workItem from="1707572112510" duration="6976000" />
-      <workItem from="1707615344727" duration="15240000" />
+      <workItem from="1707615344727" duration="17220000" />
+      <workItem from="1707664660555" duration="306000" />
     </task>
     <servers />
   </component>
