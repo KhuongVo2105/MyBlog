@@ -34,6 +34,12 @@
       <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
       <version>3.0.0</version>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/at.favre.lib/bcrypt -->
+    <dependency>
+      <groupId>at.favre.lib</groupId>
+      <artifactId>bcrypt</artifactId>
+      <version>0.9.0</version>
+    </dependency>
 
   </dependencies>
   <build>
