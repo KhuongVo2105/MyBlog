@@ -16,8 +16,8 @@
         <option value="CSS File" />
         <option value="HTML File" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="Jsp File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -43,6 +43,7 @@
     "Application.DAO_User (2).executor": "Run",
     "Application.DAO_User.executor": "Run",
     "DefaultHtmlFileTemplate": "HTML File",
+    "JavaScript Debug.1.html.executor": "Run",
     "JavaScript Debug.Signin.html.executor": "Run",
     "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
@@ -120,7 +121,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Signin.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/MyBlog/src/main/webapp/Signin.html" useBuiltInWebServerPort="true">
+    <configuration name="1.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/MyBlog/src/main/webapp/Resources/1.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
     <configuration name="MyBlog" type="com.poratu.idea.plugins.tomcat">
@@ -148,11 +149,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JavaScript Debug.1.html" />
         <item itemvalue="Application.DAO_User (2)" />
         <item itemvalue="Application.DAO_User" />
         <item itemvalue="Application.DAO_User (1)" />
         <item itemvalue="Application.DAO_Social" />
-        <item itemvalue="JavaScript Debug.Signin.html" />
       </list>
     </recent_temporary>
   </component>
@@ -181,7 +182,7 @@
       <workItem from="1707733280743" duration="3123000" />
       <workItem from="1707746867561" duration="9042000" />
       <workItem from="1707786651122" duration="1943000" />
-      <workItem from="1707790186355" duration="8779000" />
+      <workItem from="1707790186355" duration="16618000" />
     </task>
     <servers />
   </component>
