@@ -34,11 +34,29 @@
       <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
       <version>3.0.0</version>
     </dependency>
-    <!-- https://mvnrepository.com/artifact/at.favre.lib/bcrypt -->
+    <!-- https://mvnrepository.com/artifact/org.mindrot/jbcrypt -->
     <dependency>
-      <groupId>at.favre.lib</groupId>
-      <artifactId>bcrypt</artifactId>
-      <version>0.9.0</version>
+      <groupId>org.mindrot</groupId>
+      <artifactId>jbcrypt</artifactId>
+      <version>0.4</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.jdbi/jdbi3 -->
+    <dependency>
+      <groupId>org.jdbi</groupId>
+      <artifactId>jdbi3</artifactId>
+      <version>3.0.0-beta2</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>8.0.28</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/com.zaxxer/HikariCP -->
+    <dependency>
+      <groupId>com.zaxxer</groupId>
+      <artifactId>HikariCP</artifactId>
+      <version>4.0.3</version>
     </dependency>
 
   </dependencies>
