@@ -15,6 +15,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Create</title>
     <link rel="icon" href="<%=webUrl%>/Resources/logo.svg" type="images/png">
     <!--Bootstrap v5.3-->
@@ -28,7 +29,7 @@
     <!--jQuery-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <!--TinyMCE-->
-    <script src="https://cdn.tiny.cloud/1/cey9747ernauvj3m12r00l37wtfjwg9qr0e06msscbd9ea95/tinymce/6/tinymce.min.js"
+    <script src="<%=webUrl%>/Resources/tinymce/js/tinymce/tinymce.min.js"
             referrerpolicy="origin"></script>
 </head>
 <%
@@ -40,25 +41,31 @@
 %>
 <c:if test="${user !=null}">
     <body>
-    <form action="document" method="post" class="container-lg py-5">
+    <form action="document" method="post" class="container-lg py-5" enctype="multipart/form-data" accept-charset="UTF-8">
+        <div class="form-floating mb-3">
+            <input type="text" id="title" name="title" class="form-control" placeholder="Enter title">
+            <label for="title">Enter title</label>
+        </div>
         <input type="hidden" name="action" value="post">
-        <textarea name="content" class="tinymce" rows="20"></textarea>
+        <textarea id="mytextarea" name="content" class="tinymce" rows="50" cha></textarea>
         <input type="submit" class="btn btn-outline-primary" value="Post it">
+        <button type="button">Click</button>
     </form>
     <script>
 
+        $(document).ready(function (){
+            $('button[type=button]').click(function (){
+                var content = tinymce.get("mytextarea").getContent();
+                console.log(content)
+            })
+        })
+
         //     TinyMCE
         tinymce.init({
-            selector: '.tinymce',
-            plugins: 'ai tinycomments mentions anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed permanentpen footnotes advtemplate advtable advcode editimage tableofcontents mergetags powerpaste tinymcespellchecker autocorrect a11ychecker typography inlinecss',
-            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | align lineheight | tinycomments | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
-            tinycomments_mode: 'embedded',
-            tinycomments_author: 'Author name',
-            mergetags_list: [
-                {value: 'First.Name', title: 'First Name'},
-                {value: 'Email', title: 'Email'},
-            ],
-            ai_request: (request, respondWith) => respondWith.string(() => Promise.reject("See docs to implement AI Assistant")),
+            selector: '#mytextarea',
+            plugins: 'anchor link image table lists bold italic underline strikethrough removeformat',
+            toolbar: 'undo redo | link image table | bullist numlist | formatselect fontselect fontsizeselect | bold italic underline strikethrough | removeformat',
+            language: 'vi', // Ngôn ngữ tiếng Việt
         });
     </script>
     </body>

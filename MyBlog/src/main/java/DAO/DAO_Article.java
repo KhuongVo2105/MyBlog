@@ -18,15 +18,30 @@ public class DAO_Article implements IDAO<Article> {
     @Override
     public int insert(Article article) {
         return Jdbi.create(HikariCP.getDataSource()).withHandle(handle -> {
-            return handle.execute("INSERT INTO ARTICLES (content, thumbnail) VALUES (?,?)",
-                    article.getContent(),
-                    article.getThumbnail());
+            if (article.getThumbnail() == null || article.getThumbnail().isEmpty()) {
+                return handle.execute("INSERT INTO ARTICLES (title, content) VALUES (?,?)",
+                        article.getTitle(),
+                        article.getContent());
+            } else {
+                return handle.execute("INSERT INTO ARTICLES (title, content, thumbnail) VALUES (?,?,?)",
+                        article.getTitle(),
+                        article.getContent(),
+                        article.getThumbnail());
+            }
         });
     }
 
     @Override
     public Article select(Article article) {
-        return null;
+        return Jdbi.create(HikariCP.getDataSource())
+                .registerRowMapper(Article.class, new ArticleMapper())
+                .withHandle(handle -> {
+                    return handle.createQuery("SELECT * FROM ARTICLES WHERE ID = ?")
+                            .bind(0, article.getId())
+                            .mapTo(Article.class)
+                            .findFirst()
+                            .get();
+                });
     }
 
     @Override
@@ -43,6 +58,18 @@ public class DAO_Article implements IDAO<Article> {
     public int delete(Article article) {
         return 0;
     }
+
+    public Collection<Article> selectAllByTopic(int offset, int limit) {
+        return Jdbi.create(HikariCP.getDataSource())
+                .registerRowMapper(Article.class, new ArticleMapper())
+                .withHandle(handle -> {
+                    return handle.createQuery("SELECT * FROM ARTICLES ORDER BY Time LIMIT ? OFFSET ?")
+                            .bind(0, limit)
+                            .bind(1, offset)
+                            .mapTo(Article.class)
+                            .list();
+                });
+    }
 }
 
 class ArticleMapper implements RowMapper<Article> {
@@ -51,8 +78,11 @@ class ArticleMapper implements RowMapper<Article> {
     public Article map(ResultSet rs, StatementContext ctx) throws SQLException {
         return new Article(
                 rs.getInt("id"),
+                rs.getString("title"),
                 rs.getString("content"),
-                rs.getString("thumbnail")
+                rs.getString("thumbnail"),
+                rs.getTimestamp("time"),
+                rs.getString("author")
         );
     }
 }

@@ -8,22 +8,34 @@ div.album p.card-text {
     overflow-y: hidden;
 }
 
+div#card div.box-img {
+    width: 100%;
+    height: 225px;
+    display: flex;
+}
+
+div#card div.box-img img {
+    width: 100%;
+    height: 100%;
+}
+
 div#subscribe div.modal-body button {
     position: absolute;
     right: 30px;
 }
 
-div.content div.content-img img {
+div.content img {
     width: 100%;
 }
 
-div.content div.content-img p {
-    font-size: small;
+div.content p {
+    /*font-size: small;*/
     color: grey;
 }
 
 div#propose a {
     text-decoration: none;
+    margin: 10px 0;
 }
 
 div#propose a img{

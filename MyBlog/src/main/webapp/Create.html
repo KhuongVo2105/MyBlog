@@ -21,6 +21,10 @@
 </head>
 <body>
 <form action="document" method="post" class="container-lg py-5">
+    <div class="form-floating mb-3">
+        <input type="text" id="title" name="title" class="form-control" placeholder="Enter title">
+        <label for="title">Enter title</label>
+    </div>
     <input type="hidden" name="action" value="post">
     <textarea name="content" class="tinymce" rows="20"></textarea>
     <input type="submit" class="btn btn-outline-primary" value="Post it">
