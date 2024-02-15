@@ -23,16 +23,16 @@
             </a>
             <ul class="navbar-nav col-lg-6 justify-content-lg-center">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link" aria-current="page" href="<%=webUrl%>/" data-href="<%=request.getContextPath()%>/index.jsp">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
+                    <a class="nav-link" href="#" data-href="<%=request.getContextPath()%>/About.jsp">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<%=webUrl%>/Blog.jsp">Blog</a>
+                    <a class="nav-link" href="<%=webUrl%>/Blog.jsp" data-href="<%=request.getContextPath()%>/Blog.jsp">Blog</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
+                    <a class="nav-link" href="#" data-href="<%=request.getContextPath()%>/Contact.jsp">Contact</a>
                 </li>
             </ul>
             <div class="d-lg-flex col-lg-3 justify-content-lg-around">
@@ -83,7 +83,8 @@
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end">
                         <li><a href="#" class="dropdown-item">Donation</a></li>
-                        <li><a id="logout" class="dropdown-item text-danger" href="<%=webUrl%>/user?action=log-out">Logout</a></li>
+                        <li><a id="logout" class="dropdown-item text-danger" href="<%=webUrl%>/user?action=log-out">Logout</a>
+                        </li>
                     </ul>
                 </div>
                 <%
@@ -111,11 +112,29 @@
     </div>
 </div>
 <script>
-    $(document).ready(function (){
-        $('a#logout').click(function (){
+    $(document).ready(function () {
+        $('a#logout').click(function () {
             return (confirm("Do you want to log out?"))
         })
     })
+
+    function currentCheck() {
+        let currentPagePath = window.location.pathname;
+        if (currentPagePath === '/MyBlog/') {
+            currentPagePath = currentPagePath.concat('index.jsp')
+        }
+        console.log(currentPagePath)
+        const navLinks = $('ul.navbar-nav li.nav-item a');
+
+        navLinks.each((index, navLink) => {
+            const linkHref = $(navLink).attr('data-href');
+            console.log(linkHref)
+            // So sánh đường dẫn trang hiện tại với href của từng thẻ `a`
+            console.log(currentPagePath.includes(linkHref))
+            if(currentPagePath.includes(linkHref)) $(navLink).addClass('active')
+            else $(navLink).removeClass('active')
+        });
+    }
 
     const myModal = document.getElementById('myModal')
     const myInput = document.getElementById('myInput')

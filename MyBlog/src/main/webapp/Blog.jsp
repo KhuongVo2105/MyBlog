@@ -82,24 +82,24 @@
         <div class="container">
 
             <div id="card" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                <%--                <div class="col">--%>
-                <%--                    <div class="card shadow-sm">--%>
-                <%--                        <div class="box-img"><img src="<%=webUrl%>/Resources/thumbnail-default.jpg" alt=""></div>--%>
-                <%--                        <div class="card-body">--%>
-                <%--                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to--%>
-                <%--                                additional content. This content is a little bit longer.</p>--%>
-                <%--                            <input type="hidden" name="content_id" value="1"/>--%>
-                <%--                            <div class="d-flex justify-content-between align-items-center">--%>
-                <%--                                <div class="btn-group">--%>
-                <%--                                    <a href="<%=webUrl%>/document?action=detail&content_id=1"--%>
-                <%--                                       class="btn btn-sm btn-outline-success">View</a>--%>
-                <%--                                    <button type="button" class="btn btn-sm btn-outline-primary">Edit</button>--%>
+                <%--                                <div class="col">--%>
+                <%--                                    <div class="card shadow-sm">--%>
+                <%--                                        <div class="box-img"><img src="<%=webUrl%>/Resources/thumbnail-default.jpg" alt=""></div>--%>
+                <%--                                        <div class="card-body">--%>
+                <%--                                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to--%>
+                <%--                                                additional content. This content is a little bit longer.</p>--%>
+                <%--                                            <input type="hidden" name="content_id" value="1"/>--%>
+                <%--                                            <div class="d-flex justify-content-between align-items-center">--%>
+                <%--                                                <div class="btn-group">--%>
+                <%--                                                    <button type="button"--%>
+                <%--                                                       class="btn btn-sm btn-outline-success">View</button>--%>
+                <%--                                                    <button type="button" class="btn btn-sm btn-outline-primary">Edit</button>--%>
+                <%--                                                </div>--%>
+                <%--                                                <small class="text-body-secondary">9 mins</small>--%>
+                <%--                                            </div>--%>
+                <%--                                        </div>--%>
+                <%--                                    </div>--%>
                 <%--                                </div>--%>
-                <%--                                <small class="text-body-secondary">9 mins</small>--%>
-                <%--                            </div>--%>
-                <%--                        </div>--%>
-                <%--                    </div>--%>
-                <%--                </div>--%>
             </div>
 
 
@@ -129,9 +129,11 @@
 
 <script>
     $(document).ready(function () {
+        currentCheck()
         loadmore()
         $('button#load-more').click(loadmore);
-        $('button.btn-outline-success').click(view_more);
+        // $('button.btn-outline-success').click(view_more);
+        $(document).on('click', 'button.btn-outline-success.view', view_more)
     })
 
     let limit = 6;
@@ -160,7 +162,7 @@
                 const cardContainer = $("div#card");
 
                 if (dataArray != null || dataArray.length != 0) {
-                    if (dataArray.length<limit){
+                    if (dataArray.length < limit) {
                         hide_load_more();
                     }
                     // 3. Iterate over each article and create the HTML structure:
@@ -177,13 +179,15 @@
                         // Tạo nhóm nút bấm (btn-group)
                         const e9 = $('<div></div>').addClass('btn-group');
                         // Tạo nút "View"
-                        const e10 = $('<a></a>')
-                            .addClass('btn btn-sm btn-outline-success')
-                            .attr('href', `<%=webUrl%>/document?action=detail&content_id=`+article.id)
+                        const e10 = $('<button></button>')
+                            .addClass('btn btn-sm btn-outline-success view')
+                            .attr('type', 'button')
+                            <%--.attr('href', `<%=webUrl%>/document?action=detail&content_id=`+article.id)--%>
                             .text('View');
                         // Tạo nút "Edit"
                         const e11 = $('<button></button>')
-                            .addClass('btn btn-sm btn-outline-primary')
+                            .addClass('btn btn-sm btn-outline-primary edit')
+                            .attr('type', 'button')
                             .text('Edit');
                         // Thêm nút "View" và "Edit" vào nhóm nút
                         e9.append(e10, e11);
@@ -213,25 +217,11 @@
     // It finds the nearest div with the class card-body, then finds an input of type hidden within it
     function view_more() {
         const content_id = $(this).closest('div.card-body').find('input[type=hidden]').val()
-        console.log(content_id)
-        return false
-        // $.ajax({
-        //     url: "document",
-        //     type: "GET",
-        //     data: {
-        //         action: "detail",
-        //         content_id: content_id
-        //     },
-        //     success: function (data) {
-        //
-        //     },
-        //     error: function () {
-        //
-        //     }
-        // })
+        // console.log(content_id)
+        window.location.href = '<%=webUrl%>/document?action=detail&content_id=' + content_id;
     }
 
-    function hide_load_more(){
+    function hide_load_more() {
         $('button#load-more').hide()
     }
 
