@@ -28,6 +28,9 @@
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
 }</component>
@@ -36,34 +39,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.DAO_Social.executor": "Run",
-    "Application.DAO_User (1).executor": "Run",
-    "Application.DAO_User (2).executor": "Run",
-    "Application.DAO_User.executor": "Run",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "JavaScript Debug.Signin.html.executor": "Run",
-    "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Smart Tomcat.MyBlog.executor": "Run",
-    "last_opened_file_path": "/home/khuongvo/Documents/Git/MyBlog/MyBlog/MyBlog/src/main/webapp/Resources",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "MavenSettings"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.DAO_Social.executor&quot;: &quot;Run&quot;,
+    &quot;Application.DAO_User (1).executor&quot;: &quot;Run&quot;,
+    &quot;Application.DAO_User (2).executor&quot;: &quot;Run&quot;,
+    &quot;Application.DAO_User.executor&quot;: &quot;Run&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;JavaScript Debug.1.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.Signin.html.executor&quot;: &quot;Run&quot;,
+    &quot;Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Smart Tomcat.MyBlog.executor&quot;: &quot;Run&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/khuongvo/Documents/Git/MyBlog/MyBlog/MyBlog/src/main/webapp/Resources&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/webapp/Resources" />
       <recent name="$PROJECT_DIR$/src/main/resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/webapp/Resources" />
+      <recent name="$PROJECT_DIR$/src/main/webapp/Resources/tinymce/js/tinymce/langs" />
       <recent name="$PROJECT_DIR$/src/main/resources" />
     </key>
   </component>
@@ -120,7 +126,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Signin.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/MyBlog/src/main/webapp/Signin.html" useBuiltInWebServerPort="true">
+    <configuration name="1.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/MyBlog/src/main/webapp/Resources/1.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
     <configuration name="MyBlog" type="com.poratu.idea.plugins.tomcat">
@@ -148,11 +154,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JavaScript Debug.1.html" />
         <item itemvalue="Application.DAO_User (2)" />
         <item itemvalue="Application.DAO_User" />
         <item itemvalue="Application.DAO_User (1)" />
         <item itemvalue="Application.DAO_Social" />
-        <item itemvalue="JavaScript Debug.Signin.html" />
       </list>
     </recent_temporary>
   </component>
@@ -181,7 +187,12 @@
       <workItem from="1707733280743" duration="3123000" />
       <workItem from="1707746867561" duration="9042000" />
       <workItem from="1707786651122" duration="1943000" />
-      <workItem from="1707790186355" duration="8779000" />
+      <workItem from="1707790186355" duration="16762000" />
+      <workItem from="1707871942544" duration="6330000" />
+      <workItem from="1707880563341" duration="15252000" />
+      <workItem from="1707918129389" duration="7995000" />
+      <workItem from="1707958049087" duration="4633000" />
+      <workItem from="1707963836066" duration="2749000" />
     </task>
     <servers />
   </component>
