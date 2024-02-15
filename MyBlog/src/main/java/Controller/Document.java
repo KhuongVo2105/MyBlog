@@ -1,7 +1,9 @@
 package Controller;
 
 import DAO.DAO_Article;
+import DAO.DAO_Comment;
 import Model.Article;
+import Model.Comment;
 import com.google.gson.Gson;
 
 import javax.servlet.ServletException;
@@ -13,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 @MultipartConfig
@@ -34,7 +37,24 @@ public class Document extends HttpServlet {
             case "edit":
                 edit(req, resp);
                 break;
+            case "load-comment":
+                loadComment(req, resp);
+                break;
         }
+    }
+
+    private void loadComment(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        String content_id = req.getParameter("content_id");
+        System.out.println(content_id);
+        List<Comment> comments = new ArrayList<>();
+        try {
+            comments = (List<Comment>) DAO_Comment.getInstance().selectAllByArticleId(Integer.parseInt(req.getParameter("content_id")));
+        } catch (NumberFormatException e) {
+            throw new RuntimeException(e);
+        }
+        PrintWriter out = new PrintWriter(resp.getOutputStream());
+        out.print(new Gson().toJson(comments));
+        out.close();
     }
 
     private void edit(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -149,10 +169,10 @@ public class Document extends HttpServlet {
             e.printStackTrace();
         }
         article = DAO_Article.getInstance().select(article);
-        if(article == null){
+        if (article == null) {
             error = true;
             System.out.println("Article not found");
-        }else{
+        } else {
             article.setContent(content);
             article.setTitle(title);
             article.setTime(new Timestamp(System.currentTimeMillis()));
