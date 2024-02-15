@@ -80,12 +80,13 @@ public class Document extends HttpServlet {
     }
 
     private void loadMore(HttpServletRequest req, HttpServletResponse resp) {
-        String offset = req.getParameter("offset");
+        String offset = req.getParameter("offset"), limit = req.getParameter("limit");
         int count = (offset == null || offset.isEmpty()) ? 0 : Integer.parseInt(offset);
+        int lmt = (limit == null || limit.isEmpty()) ? 6 : Integer.parseInt(limit);
 
         // TODO: Load more
         // Add your code here to load more data from the database and return it in the response
-        List<Article> articles = (List<Article>) DAO_Article.getInstance().selectAllByTopic(count, 6);
+        List<Article> articles = (List<Article>) DAO_Article.getInstance().selectAllByTopic(count, lmt);
         for (Article article : articles) {
             article.setContent(null);
             article.setAuthor(null);

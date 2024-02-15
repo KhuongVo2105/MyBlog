@@ -47,6 +47,14 @@ public class Article {
     }
 
     public void setThumbnail(String thumbnail) {
+        if (thumbnail !=null || thumbnail.isEmpty()){
+            if (content.charAt(0) == '\''){
+                content = content.substring(1);
+            }
+            if (content.charAt(content.length() - 1) == '\''){
+                content = content.substring(0, content.length() - 1);
+            }
+        }
         this.thumbnail = thumbnail;
     }
 

@@ -599,9 +599,9 @@
 											},
 											"font": "Arial;13;1",
 											"left": 828.5,
-											"top": 502,
+											"top": 508.5,
 											"width": 64,
-											"height": 26,
+											"height": 13,
 											"text": "Tương tác",
 											"wordWrap": true
 										},
@@ -635,9 +635,9 @@
 									],
 									"font": "Arial;13;0",
 									"left": 823.5,
-									"top": 495,
+									"top": 501.5,
 									"width": 74,
-									"height": 38,
+									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAGNjB6xXZ1ulHM="
 									},
@@ -1398,9 +1398,9 @@
 											},
 											"font": "Arial;13;1",
 											"left": 1055,
-											"top": 550,
+											"top": 556.5,
 											"width": 75,
-											"height": 26,
+											"height": 13,
 											"text": "Xem bài viết",
 											"wordWrap": true
 										},
@@ -1432,9 +1432,9 @@
 									],
 									"font": "Arial;13;0",
 									"left": 1050,
-									"top": 543,
+									"top": 549.5,
 									"width": 85,
-									"height": 38,
+									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAGNjB97MJ4mhGw="
 									},
@@ -1795,9 +1795,9 @@
 											},
 											"font": "Arial;13;1",
 											"left": 968.5,
-											"top": 662,
+											"top": 668.5,
 											"width": 83,
-											"height": 26,
+											"height": 13,
 											"text": "React bài viết",
 											"wordWrap": true
 										},
@@ -1831,9 +1831,9 @@
 									],
 									"font": "Arial;13;0",
 									"left": 963.5,
-									"top": 655,
+									"top": 661.5,
 									"width": 93,
-									"height": 38,
+									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAGNjB+rMZ6Ca1M="
 									},
@@ -2578,9 +2578,9 @@
 											},
 											"font": "Arial;13;1",
 											"left": 425,
-											"top": 414,
+											"top": 420.5,
 											"width": 86,
-											"height": 26,
+											"height": 13,
 											"text": "Chỉnh sửa bài",
 											"wordWrap": true
 										},
@@ -2612,9 +2612,9 @@
 									],
 									"font": "Arial;13;0",
 									"left": 420,
-									"top": 407,
+									"top": 413.5,
 									"width": 96,
-									"height": 38,
+									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAGNjCCY8Z9GsIA="
 									},
@@ -2773,9 +2773,9 @@
 											},
 											"font": "Arial;13;1",
 											"left": 165,
-											"top": 318,
+											"top": 324.5,
 											"width": 65,
-											"height": 26,
+											"height": 13,
 											"text": "Ẩn bài viết",
 											"wordWrap": true
 										},
@@ -2809,9 +2809,9 @@
 									],
 									"font": "Arial;13;0",
 									"left": 160,
-									"top": 311,
+									"top": 317.5,
 									"width": 75,
-									"height": 38,
+									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAGNjCC2dZ90a8s="
 									},
@@ -2975,9 +2975,9 @@
 											},
 											"font": "Arial;13;1",
 											"left": 182,
-											"top": 414,
+											"top": 420.5,
 											"width": 72,
-											"height": 26,
+											"height": 13,
 											"text": "Xóa bài viết",
 											"wordWrap": true
 										},
@@ -3011,9 +3011,9 @@
 									],
 									"font": "Arial;13;0",
 									"left": 177,
-									"top": 407,
+									"top": 413.5,
 									"width": 82,
-									"height": 38,
+									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAGNjCESSp+ky7Q="
 									},
@@ -3767,9 +3767,9 @@
 											},
 											"font": "Arial;13;1",
 											"left": 420,
-											"top": 678,
+											"top": 684.5,
 											"width": 175,
-											"height": 26,
+											"height": 13,
 											"text": "Cấp quyền bình luận bài viết",
 											"wordWrap": true
 										},
@@ -3803,9 +3803,9 @@
 									],
 									"font": "Arial;13;0",
 									"left": 415,
-									"top": 671,
+									"top": 677.5,
 									"width": 185,
-									"height": 38,
+									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAGNjCP1SaBfj6o="
 									},
@@ -5324,9 +5324,9 @@
 											},
 											"font": "Arial;13;1",
 											"left": 517,
-											"top": 190,
+											"top": 196.5,
 											"width": 67,
-											"height": 26,
+											"height": 13,
 											"text": "Đăng nhập",
 											"wordWrap": true
 										},
@@ -5360,9 +5360,9 @@
 									],
 									"font": "Arial;13;0",
 									"left": 512,
-									"top": 183,
+									"top": 189.5,
 									"width": 77,
-									"height": 38,
+									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAGNjNKYn6cmG2k="
 									},
@@ -6403,9 +6403,9 @@
 											},
 											"font": "Arial;13;1",
 											"left": 680,
-											"top": 198,
+											"top": 204.5,
 											"width": 81,
-											"height": 26,
+											"height": 13,
 											"text": "Đổi mật khẩu",
 											"wordWrap": true
 										},
@@ -6439,9 +6439,9 @@
 									],
 									"font": "Arial;13;0",
 									"left": 675,
-									"top": 191,
+									"top": 197.5,
 									"width": 91,
-									"height": 38,
+									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAGNjNS5eL0nk7I="
 									},
@@ -8603,9 +8603,9 @@
 											},
 											"font": "Arial;13;1",
 											"left": 207,
-											"top": 214,
+											"top": 220.5,
 											"width": 76,
-											"height": 26,
+											"height": 13,
 											"text": "Theo chủ đề",
 											"wordWrap": true
 										},
@@ -8635,9 +8635,9 @@
 									],
 									"font": "Arial;13;0",
 									"left": 202,
-									"top": 207,
+									"top": 213.5,
 									"width": 86,
-									"height": 38,
+									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAGNjOOUPRqCSrk="
 									},
@@ -12402,7 +12402,7 @@
 											"font": "Arial;13;1",
 											"left": 592,
 											"top": 549,
-											"width": 149.158203125,
+											"width": 178.560546875,
 											"height": 13,
 											"text": "Articles"
 										},
@@ -12428,7 +12428,22 @@
 													"font": "Arial;13;0",
 													"left": 597,
 													"top": 572,
-													"width": 139.158203125,
+													"width": 168.560546875,
+													"height": 13
+												},
+												{
+													"_type": "ERDColumnView",
+													"_id": "AAAAAAGNpv7AgcjMSj4=",
+													"_parent": {
+														"$ref": "AAAAAAGNmzaEf/cME9o="
+													},
+													"model": {
+														"$ref": "AAAAAAGNpv7AdsjJapE="
+													},
+													"font": "Arial;13;0",
+													"left": 597,
+													"top": 587,
+													"width": 168.560546875,
 													"height": 13
 												},
 												{
@@ -12442,8 +12457,8 @@
 													},
 													"font": "Arial;13;0",
 													"left": 597,
-													"top": 587,
-													"width": 139.158203125,
+													"top": 602,
+													"width": 168.560546875,
 													"height": 13
 												},
 												{
@@ -12457,23 +12472,38 @@
 													},
 													"font": "Arial;13;0",
 													"left": 597,
-													"top": 602,
-													"width": 139.158203125,
+													"top": 617,
+													"width": 168.560546875,
+													"height": 13
+												},
+												{
+													"_type": "ERDColumnView",
+													"_id": "AAAAAAGNpv50HMjFdE8=",
+													"_parent": {
+														"$ref": "AAAAAAGNmzaEf/cME9o="
+													},
+													"model": {
+														"$ref": "AAAAAAGNpv50A8jCbXI="
+													},
+													"font": "Arial;13;0",
+													"left": 597,
+													"top": 632,
+													"width": 168.560546875,
 													"height": 13
 												}
 											],
 											"font": "Arial;13;0",
 											"left": 592,
 											"top": 567,
-											"width": 149.158203125,
-											"height": 53
+											"width": 178.560546875,
+											"height": 83
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 592,
 									"top": 544,
-									"width": 149.158203125,
-									"height": 76,
+									"width": 178.560546875,
+									"height": 106,
 									"nameLabel": {
 										"$ref": "AAAAAAGNmzaEf/cLVSk="
 									},
@@ -13200,6 +13230,16 @@
 								},
 								{
 									"_type": "ERDColumn",
+									"_id": "AAAAAAGNpv7AdsjJapE=",
+									"_parent": {
+										"$ref": "AAAAAAGNmzaEf/cISCk="
+									},
+									"name": "title",
+									"type": "text",
+									"length": 0
+								},
+								{
+									"_type": "ERDColumn",
 									"_id": "AAAAAAGNm01OOfeYFBM=",
 									"_parent": {
 										"$ref": "AAAAAAGNmzaEf/cISCk="
@@ -13217,6 +13257,16 @@
 									"name": "thumbnail",
 									"documentation": "nếu không có yêu cầu gì thì sẽ được để mặc định",
 									"type": "text",
+									"length": 0
+								},
+								{
+									"_type": "ERDColumn",
+									"_id": "AAAAAAGNpv50A8jCbXI=",
+									"_parent": {
+										"$ref": "AAAAAAGNmzaEf/cISCk="
+									},
+									"name": "time",
+									"type": "Timestamp",
 									"length": 0
 								}
 							]

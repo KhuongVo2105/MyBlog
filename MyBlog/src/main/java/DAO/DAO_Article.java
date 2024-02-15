@@ -63,7 +63,7 @@ public class DAO_Article implements IDAO<Article> {
         return Jdbi.create(HikariCP.getDataSource())
                 .registerRowMapper(Article.class, new ArticleMapper())
                 .withHandle(handle -> {
-                    return handle.createQuery("SELECT * FROM ARTICLES ORDER BY Time LIMIT ? OFFSET ?")
+                    return handle.createQuery("SELECT * FROM ARTICLES ORDER BY Time DESC LIMIT ? OFFSET ?")
                             .bind(0, limit)
                             .bind(1, offset)
                             .mapTo(Article.class)

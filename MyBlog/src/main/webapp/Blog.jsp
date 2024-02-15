@@ -16,7 +16,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Blog</title>
-    <link rel="icon" href="<%=webUrl%>/Resources/logo.svg" type="images/png">
+    <link rel="icon" href="<%=webUrl%>/Resources/logo.svg" type="images/svg">
     <!--Bootstrap v5.3-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -24,7 +24,7 @@
             integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
             crossorigin="anonymous"></script>
     <!--My CSS-->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="<%=webUrl%>/style.css">
     <!--jQuery-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
@@ -82,68 +82,24 @@
         <div class="container">
 
             <div id="card" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-<%--                <div class="col">--%>
-<%--                    <div class="card shadow-sm">--%>
-<%--                        <div class="box-img"><img src="<%=webUrl%>/Resources/thumbnail-default.jpg" alt=""></div>--%>
-<%--                        <div class="card-body">--%>
-<%--                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to--%>
-<%--                                additional content. This content is a little bit longer.</p>--%>
-<%--                            <input type="hidden" name="content_id" value="1"/>--%>
-<%--                            <div class="d-flex justify-content-between align-items-center">--%>
-<%--                                <div class="btn-group">--%>
-<%--                                    <a href="<%=webUrl%>/document?action=detail&content_id=1"--%>
-<%--                                       class="btn btn-sm btn-outline-success">View</a>--%>
-<%--                                    <button type="button" class="btn btn-sm btn-outline-primary">Edit</button>--%>
-<%--                                </div>--%>
-<%--                                <small class="text-body-secondary">9 mins</small>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--                <div class="col">--%>
-<%--                    <div class="card shadow-sm">--%>
-<%--                        <svg class="bd-placeholder-img card-img-top" width="100%" height="225"--%>
-<%--                             xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"--%>
-<%--                             preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>--%>
-<%--                            <rect width="100%" height="100%" fill="#55595c"></rect>--%>
-<%--                            <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>--%>
-<%--                        </svg>--%>
-<%--                        <div class="card-body">--%>
-<%--                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to--%>
-<%--                                additional content. This content is a little bit longer.</p>--%>
-<%--                            <input type="hidden" name="content_id" value="2"/>--%>
-<%--                            <div class="d-flex justify-content-between align-items-center">--%>
-<%--                                <div class="btn-group">--%>
-<%--                                    <button type="button" class="btn btn-sm btn-outline-success">View</button>--%>
-<%--                                    <button type="button" class="btn btn-sm btn-outline-primary">Edit</button>--%>
-<%--                                </div>--%>
-<%--                                <small class="text-body-secondary">9 mins</small>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--                <div class="col">--%>
-<%--                    <div class="card shadow-sm">--%>
-<%--                        <svg class="bd-placeholder-img card-img-top" width="100%" height="225"--%>
-<%--                             xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"--%>
-<%--                             preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>--%>
-<%--                            <rect width="100%" height="100%" fill="#55595c"></rect>--%>
-<%--                            <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>--%>
-<%--                        </svg>--%>
-<%--                        <div class="card-body">--%>
-<%--                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to--%>
-<%--                                additional content. This content is a little bit longer.</p>--%>
-<%--                            <input type="hidden" name="content_id" value="3"/>--%>
-<%--                            <div class="d-flex justify-content-between align-items-center">--%>
-<%--                                <div class="btn-group">--%>
-<%--                                    <button type="button" class="btn btn-sm btn-outline-success">View</button>--%>
-<%--                                    <button type="button" class="btn btn-sm btn-outline-primary">Edit</button>--%>
-<%--                                </div>--%>
-<%--                                <small class="text-body-secondary">9 mins</small>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
+                <%--                <div class="col">--%>
+                <%--                    <div class="card shadow-sm">--%>
+                <%--                        <div class="box-img"><img src="<%=webUrl%>/Resources/thumbnail-default.jpg" alt=""></div>--%>
+                <%--                        <div class="card-body">--%>
+                <%--                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to--%>
+                <%--                                additional content. This content is a little bit longer.</p>--%>
+                <%--                            <input type="hidden" name="content_id" value="1"/>--%>
+                <%--                            <div class="d-flex justify-content-between align-items-center">--%>
+                <%--                                <div class="btn-group">--%>
+                <%--                                    <a href="<%=webUrl%>/document?action=detail&content_id=1"--%>
+                <%--                                       class="btn btn-sm btn-outline-success">View</a>--%>
+                <%--                                    <button type="button" class="btn btn-sm btn-outline-primary">Edit</button>--%>
+                <%--                                </div>--%>
+                <%--                                <small class="text-body-secondary">9 mins</small>--%>
+                <%--                            </div>--%>
+                <%--                        </div>--%>
+                <%--                    </div>--%>
+                <%--                </div>--%>
             </div>
 
 
@@ -173,19 +129,24 @@
 
 <script>
     $(document).ready(function () {
+        loadmore()
         $('button#load-more').click(loadmore);
         $('button.btn-outline-success').click(view_more);
     })
 
+    let limit = 6;
+
     function loadmore() {
         $.ajax({
-            url: "document",
-            type: "GET",
+            url: "<%=webUrl%>/document",
+            type: "get",
             data: {
                 action: "load-more",
-                offset: countElements()
+                offset: countElements(),
+                limit: limit
             },
             success: function (data) {
+                console.log("data: " + data)
                 // 1. Parse JSON data and handle potential errors:
                 let dataArray;
                 try {
@@ -196,36 +157,50 @@
                 }
 
                 // 2. Select the target container element:
-                const cardContainer = $("#card");
+                const cardContainer = $("div#card");
 
-                // 3. Iterate over each article and create the HTML structure:
-                dataArray.forEach((article, index) => {
-                    // 4. Create the card structure using template literals for clarity:
-                    const cardHtml = `
-            <div class="col">
-                <div class="card shadow-sm">
-                    <div class="box-img"><img src="${webUrl}/Resources/${article.thumbnail}" alt=""></div>
-                    <div class="card-body">
-                        <p class="card-text">${article.title}</p>
-                        <input type="hidden" name="content_id" value="${article.id}">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <a href="${webUrl}/document?action=detail&content_id=${article.id}" class="btn btn-sm btn-outline-success">View</a>
-                                <button type="button" class="btn btn-sm btn-outline-primary">Edit</button>
-                            </div>
-                            <small class="text-body-secondary">${article.time}</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        `;
-
-                    // 5. Create jQuery object from the HTML string:
-                    const cardElement = $(cardHtml);
-
-                    // 6. Append the new card element to the container:
-                    cardContainer.append(cardElement);
-                });
+                if (dataArray != null || dataArray.length != 0) {
+                    if (dataArray.length<limit){
+                        hide_load_more();
+                    }
+                    // 3. Iterate over each article and create the HTML structure:
+                    dataArray.forEach((article, index) => {
+                        // 4. Create the card structure using template literals for clarity:
+                        const e1 = $("<div></div>").addClass('col')
+                        const e2 = $('<div></div>').addClass('card shadow-sm')
+                        const e3 = $('<div></div>').addClass('box-img')
+                        const e4 = $('<img>').attr('src', '<%=webUrl%>/Resources/' + article.thumbnail).attr('alt', '')
+                        const e5 = $('<div></div>').addClass('card-body')
+                        const e6 = $('<p></p>').addClass('card-text').html(article.title)
+                        const e7 = $('<input>').attr('type', 'hidden').attr('name', 'content_id').attr('value', article.id)
+                        const e8 = $('<div></div>').addClass('d-flex justify-content-between align-items-center');
+                        // Tạo nhóm nút bấm (btn-group)
+                        const e9 = $('<div></div>').addClass('btn-group');
+                        // Tạo nút "View"
+                        const e10 = $('<a></a>')
+                            .addClass('btn btn-sm btn-outline-success')
+                            .attr('href', `<%=webUrl%>/document?action=detail&content_id=`+article.id)
+                            .text('View');
+                        // Tạo nút "Edit"
+                        const e11 = $('<button></button>')
+                            .addClass('btn btn-sm btn-outline-primary')
+                            .text('Edit');
+                        // Thêm nút "View" và "Edit" vào nhóm nút
+                        e9.append(e10, e11);
+                        // Thêm nhóm nút và thời gian vào div d-flex
+                        e8.append(e9, $('<small></small>').addClass('text-body-secondary').text(article.time));
+                        // Thêm tất cả vào card-body
+                        e5.append(e6, e7, e8);
+                        // Thêm card-body vào thẻ img
+                        e2.append(e3.append(e4), e5);
+                        // Thêm thẻ img vào thẻ col
+                        e1.append(e2);
+                        // Thêm thẻ col vào container
+                        cardContainer.append(e1);
+                    });
+                } else {
+                    hide_load_more();
+                }
             },
             error: function () {
                 console.error()
@@ -238,33 +213,31 @@
     // It finds the nearest div with the class card-body, then finds an input of type hidden within it
     function view_more() {
         const content_id = $(this).closest('div.card-body').find('input[type=hidden]').val()
-        // console.log(content_id)
-        $.ajax({
-            url: "document",
-            type: "GET",
-            data: {
-                action: "detail",
-                content_id: content_id
-            },
-            success: function (data) {
+        console.log(content_id)
+        return false
+        // $.ajax({
+        //     url: "document",
+        //     type: "GET",
+        //     data: {
+        //         action: "detail",
+        //         content_id: content_id
+        //     },
+        //     success: function (data) {
+        //
+        //     },
+        //     error: function () {
+        //
+        //     }
+        // })
+    }
 
-            },
-            error: function () {
-
-            }
-        })
+    function hide_load_more(){
+        $('button#load-more').hide()
     }
 
     function countElements() {
         return $('.container div.col').length
     }
-
-    const myModal = document.getElementById('myModal')
-    const myInput = document.getElementById('myInput')
-
-    myModal.addEventListener('shown.bs.modal', () => {
-        myInput.focus()
-    })
 </script>
 </body>
 </html>
