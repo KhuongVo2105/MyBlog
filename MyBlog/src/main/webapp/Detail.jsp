@@ -62,7 +62,7 @@
                 <p class="fw-light mb-0 text-secondary"><%=time%>
                 </p>
             </div>
-            <h1 class="">Title</h1>
+            <h1 class=""><%=title%></h1>
             <p class="d-inline">By </p>
             <p class="d-inline fw-semibold text-danger"><%=author%>
             </p>

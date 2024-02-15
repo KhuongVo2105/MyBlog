@@ -44,5 +44,10 @@
 </div>
 <jsp:include page="/footer.jsp"></jsp:include>
 </div>
+<script>
+    $(document).ready(function (){
+        currentCheck()
+    })
+</script>
 </body>
 </html>

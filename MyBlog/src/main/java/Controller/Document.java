@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Timestamp;
 import java.util.List;
 
 @MultipartConfig
@@ -30,7 +31,24 @@ public class Document extends HttpServlet {
             case "load-same":
                 same(req, resp);
                 break;
+            case "edit":
+                edit(req, resp);
+                break;
         }
+    }
+
+    private void edit(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String id = req.getParameter("content_id");
+        Article article = null;
+
+        if (id != null || !id.isEmpty()) {
+            article = new Article();
+            article.setId(Integer.parseInt(id));
+            article = DAO_Article.getInstance().select(article);
+        }
+
+        req.setAttribute("article", article);
+        getServletContext().getRequestDispatcher("/Create.jsp").forward(req, resp);
     }
 
     private void same(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -110,7 +128,50 @@ public class Document extends HttpServlet {
             case "post":
                 post(req, resp);
                 break;
+            case "update":
+                update(req, resp);
+                break;
         }
+    }
+
+    private void update(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String content_id = req.getParameter("id"),
+                content = req.getParameter("content"),
+                title = req.getParameter("title"),
+                thumbnail = req.getParameter("thumbnail");
+        boolean error = false;
+        // processing
+        Article article = new Article();
+        try {
+            article.setId(Integer.parseInt(content_id));
+        } catch (NumberFormatException e) {
+            error = true;
+            e.printStackTrace();
+        }
+        article = DAO_Article.getInstance().select(article);
+        if(article == null){
+            error = true;
+            System.out.println("Article not found");
+        }else{
+            article.setContent(content);
+            article.setTitle(title);
+            article.setTime(new Timestamp(System.currentTimeMillis()));
+            if (thumbnail != null && !thumbnail.isEmpty()) {
+                article.setThumbnail(thumbnail);
+            }
+            if (DAO_Article.getInstance().update(article) > 0) {
+                System.out.println("Update success");
+            } else {
+                error = true;
+                System.out.println("Update fail");
+            }
+        }
+
+        if (error) {
+            resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Update failed. Please try again in a few minutes.");
+            return;
+        }
+        getServletContext().getRequestDispatcher("/Blog.jsp").forward(req, resp);
     }
 
     private void post(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
