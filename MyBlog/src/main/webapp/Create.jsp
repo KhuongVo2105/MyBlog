@@ -1,5 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="Model.User" %><%--
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ page import="Model.User" %>
+<%@ page import="Model.Article" %><%--
   Created by IntelliJ IDEA.
   User: khuongvo
   Date: 13/02/2024
@@ -38,27 +40,37 @@
     if (obj != null && !(obj instanceof String)) {
         user = (User) obj;
     }
+    Article article = (Article) request.getAttribute("article");
 %>
 <c:if test="${user !=null}">
     <body>
-    <form action="document" method="post" class="container-lg py-5" enctype="multipart/form-data" accept-charset="UTF-8">
+    <form action="document" method="post" class="container-lg py-5" enctype="multipart/form-data"
+          accept-charset="UTF-8">
         <div class="form-floating mb-3">
-            <input type="text" id="title" name="title" class="form-control" placeholder="Enter title">
+            <input type="text" id="title" name="title" class="form-control"
+                   placeholder="Enter title"
+                   value="<c:if test="${article !=null}"><c:out value="${fn:trim(article.title)}"></c:out></c:if>">
             <label for="title">Enter title</label>
         </div>
-        <input type="hidden" name="action" value="post">
-        <textarea id="mytextarea" name="content" class="tinymce" rows="50" cha></textarea>
+        <input type="hidden" name="action"
+               value="<c:if test="${article!=null}">update</c:if><c:if test="${article ==null}">post</c:if>">
+        <c:if test="${article !=null}">
+            <input type="hidden" name="id" value="<c:out value="${article.id}"/>">
+        </c:if>
+        <textarea id="mytextarea" name="content" class="tinymce" rows="40"><c:if test="${article !=null}"><c:out
+                value="${article.content}"></c:out></c:if>
+        </textarea>
         <input type="submit" class="btn btn-outline-primary" value="Post it">
-        <button type="button">Click</button>
+            <%--        <button type="button">Click</button>--%>
     </form>
     <script>
 
-        $(document).ready(function (){
-            $('button[type=button]').click(function (){
-                var content = tinymce.get("mytextarea").getContent();
-                console.log(content)
-            })
-        })
+        // $(document).ready(function () {
+        //     $('button[type=button]').click(function () {
+        //         var content = tinymce.get("mytextarea").getContent();
+        //         console.log(content)
+        //     })
+        // })
 
         //     TinyMCE
         tinymce.init({
@@ -71,8 +83,8 @@
     </body>
 </c:if>
 <c:if test="${user ==null}">
-<%
-  response.sendError(HttpServletResponse.SC_FORBIDDEN, "Access Denied");
-%>
+    <%
+        response.sendError(HttpServletResponse.SC_FORBIDDEN, "Access Denied");
+    %>
 </c:if>
 </html>

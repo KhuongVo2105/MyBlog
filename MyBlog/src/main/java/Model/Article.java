@@ -7,6 +7,8 @@ public class Article {
     private String title, content, thumbnail, author;
     private Timestamp time;
 
+    private byte status;
+
     public Article() {
     }
 
@@ -17,13 +19,23 @@ public class Article {
         this.thumbnail = thumbnail;
     }
 
-    public Article(int id, String title, String content, String thumbnail, Timestamp time, String author) {
+    public Article(int id, String title, String content, String thumbnail, String author, Timestamp time) {
         this.id = id;
         this.title = title;
         this.content = content;
         this.thumbnail = thumbnail;
         this.time = time;
         this.author = author;
+    }
+
+    public Article(int id, String title, String content, String thumbnail, String author, Timestamp time, byte status) {
+        this.id = id;
+        this.title = title;
+        this.content = content;
+        this.thumbnail = thumbnail;
+        this.author = author;
+        this.time = time;
+        this.status = status;
     }
 
     public int getId() {
@@ -82,6 +94,14 @@ public class Article {
         this.author = author;
     }
 
+    public byte getStatus() {
+        return status;
+    }
+
+    public void setStatus(byte status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
         return "Article{" +
@@ -91,6 +111,7 @@ public class Article {
                 ", thumbnail='" + thumbnail + '\'' +
                 ", author='" + author + '\'' +
                 ", time=" + time +
+                ", status=" + status +
                 '}';
     }
 }

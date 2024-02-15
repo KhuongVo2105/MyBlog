@@ -51,7 +51,17 @@ public class DAO_Article implements IDAO<Article> {
 
     @Override
     public int update(Article article) {
-        return 0;
+        return Jdbi.create(HikariCP.getDataSource()).withHandle(handle -> {
+            return handle
+                    .execute("UPDATE ARTICLES SET title = ?, content = ?, thumbnail = ?, time = ?, author = ?, status=? WHERE id = ?",
+                            article.getTitle(),
+                            article.getContent(),
+                            article.getThumbnail(),
+                            article.getTime(),
+                            article.getAuthor(),
+                            article.getStatus(),
+                            article.getId());
+        });
     }
 
     @Override
@@ -81,8 +91,9 @@ class ArticleMapper implements RowMapper<Article> {
                 rs.getString("title"),
                 rs.getString("content"),
                 rs.getString("thumbnail"),
+                rs.getString("author"),
                 rs.getTimestamp("time"),
-                rs.getString("author")
+                rs.getByte("status")
         );
     }
 }

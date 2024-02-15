@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="Model.User" %>
+<%@ page import="com.google.gson.Gson" %>
 <%--
   Created by IntelliJ IDEA.
   User: khuongvo
@@ -33,6 +34,11 @@
     User user = null;
     if (obj != null && !(obj instanceof String)) {
         user = (User) obj;
+    }
+    String userJson = null;
+    if (user != null) {
+        Gson gson = new Gson();
+        userJson = gson.toJson(user);
     }
 %>
 <body>
@@ -132,8 +138,8 @@
         currentCheck()
         loadmore()
         $('button#load-more').click(loadmore);
-        // $('button.btn-outline-success').click(view_more);
         $(document).on('click', 'button.btn-outline-success.view', view_more)
+        $(document).on('click', 'button.btn-outline-primary.edit', edit)
     })
 
     let limit = 6;
@@ -184,13 +190,19 @@
                             .attr('type', 'button')
                             <%--.attr('href', `<%=webUrl%>/document?action=detail&content_id=`+article.id)--%>
                             .text('View');
-                        // Tạo nút "Edit"
-                        const e11 = $('<button></button>')
-                            .addClass('btn btn-sm btn-outline-primary edit')
-                            .attr('type', 'button')
-                            .text('Edit');
-                        // Thêm nút "View" và "Edit" vào nhóm nút
-                        e9.append(e10, e11);
+
+                        var user = (<%=userJson%>);
+                        if (user) {
+                            // Tạo nút "Edit"
+                            const e11 = $('<button></button>')
+                                .addClass('btn btn-sm btn-outline-primary edit')
+                                .attr('type', 'button')
+                                .text('Edit');
+                            // Thêm nút "View" và "Edit" vào nhóm nút
+                            e9.append(e10, e11);
+                        } else {
+                            e9.append(e10)
+                        }
                         // Thêm nhóm nút và thời gian vào div d-flex
                         e8.append(e9, $('<small></small>').addClass('text-body-secondary').text(article.time));
                         // Thêm tất cả vào card-body
@@ -228,6 +240,12 @@
     function countElements() {
         return $('.container div.col').length
     }
+
+    function edit() {
+        const content_id = $(this).closest('div.card-body').find('input[type=hidden]').val()
+        window.location.href = '<%=webUrl%>/document?action=edit&content_id=' + content_id
+    }
+
 </script>
 </body>
 </html>

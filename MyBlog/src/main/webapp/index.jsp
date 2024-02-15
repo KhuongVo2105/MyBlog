@@ -35,7 +35,6 @@
 %>
 <body>
 <jsp:include page="/header.jsp"></jsp:include>
-<%--<script src="<%=webUrl%>/Resources/Active.js"></script>--%>
 <!--Main-->
 <div class="container-fluid h-100">
     <div class="row bg-secondary h-100">
