@@ -1,7 +1,9 @@
 package Controller;
 
 import DAO.DAO_Article;
+import DAO.DAO_Comment;
 import Model.Article;
+import Model.Comment;
 import com.google.gson.Gson;
 
 import javax.servlet.ServletException;
@@ -13,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 @MultipartConfig
@@ -34,7 +37,88 @@ public class Document extends HttpServlet {
             case "edit":
                 edit(req, resp);
                 break;
+            case "load-comment":
+                loadComment(req, resp);
+                break;
+            case "insert-comment":
+                insertComment(req, resp);
+                break;
+            case "hide-comment":
+                hideComment(req, resp);
+                break;
         }
+    }
+
+    private void hideComment(HttpServletRequest req, HttpServletResponse resp) {
+        System.out.println("Hide Comment");
+        String comment_id = req.getParameter("comment_id");
+        System.out.println("comment_id: " + comment_id);
+
+        boolean error = false; // Initialize error flag
+
+        try {
+            int id = Integer.parseInt(comment_id);
+            Comment comment = new Comment();
+            comment.setId(id);
+
+            if (DAO_Comment.getInstance().delete(comment) <= 0) {
+                error = true;
+            }
+        } catch (NumberFormatException e) {
+            error = true;
+            e.printStackTrace();
+        } catch (Exception e) {
+            error = true;
+            e.printStackTrace();
+        } finally {
+            PrintWriter out = null;
+            try {
+                out = new PrintWriter(resp.getOutputStream());
+                out.println(error); // Write true for error, false for success
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            } finally {
+                if (out != null) {
+                    out.close();
+                }
+            }
+        }
+
+        System.out.println("Finish");
+    }
+
+    private void insertComment(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        System.out.println("Insert Comment");
+        String article_id = req.getParameter("article_id"),
+                email = req.getParameter("email"),
+                cmt = req.getParameter("comment");
+        boolean error = false;
+
+        Comment comment = new Comment();
+        comment.setEmail(email);
+        comment.setArticle_id(article_id);
+        comment.setComment(cmt);
+        if (DAO_Comment.getInstance().insert(comment) <= 0) {
+            error = true;
+        }
+        PrintWriter out = new PrintWriter(resp.getOutputStream());
+        out.println(!error);
+        out.close();
+        System.out.println("Finish");
+    }
+
+    private void loadComment(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        String content_id = req.getParameter("content_id");
+        System.out.println(content_id);
+        List<Comment> comments = new ArrayList<>();
+        try {
+            comments = (List<Comment>) DAO_Comment.getInstance().selectAllByArticleId(Integer.parseInt(req.getParameter("content_id")));
+        } catch (NumberFormatException e) {
+            throw new RuntimeException(e);
+        }
+        PrintWriter out = new PrintWriter(resp.getOutputStream());
+        out.print(new Gson().toJson(comments));
+        out.close();
     }
 
     private void edit(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -149,10 +233,10 @@ public class Document extends HttpServlet {
             e.printStackTrace();
         }
         article = DAO_Article.getInstance().select(article);
-        if(article == null){
+        if (article == null) {
             error = true;
             System.out.println("Article not found");
-        }else{
+        } else {
             article.setContent(content);
             article.setTitle(title);
             article.setTime(new Timestamp(System.currentTimeMillis()));
