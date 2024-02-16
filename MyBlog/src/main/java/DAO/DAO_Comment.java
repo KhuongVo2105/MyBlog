@@ -20,35 +20,6 @@ public class DAO_Comment implements IDAO<Comment> {
     public int insert(Comment comment) {
         return Jdbi.create(HikariCP.getDataSource()).withHandle(handle -> {
             try {
-//                return handle.execute("" +
-//                        "CREATE PROCEDURE insert_comment (\n" +
-//                        "    IN email VARCHAR(255),\n" +
-//                        "    IN comment TEXT,\n" +
-//                        "    IN time DATETIME,\n" +
-//                        "    IN status TINYINT,\n" +
-//                        "    IN article_id INT\n" +
-//                        ")\n" +
-//                        "BEGIN\n" +
-//                        "    DECLARE new_id INT;\n" +
-//                        "\n" +
-//                        "    INSERT INTO COMMENTS (email, comment, article_id)\n" +
-//                        "    VALUES (?,?,?)\n" +
-//                        "    ON DUPLICATE KEY UPDATE\n" +
-//                        "        email = email,\n" +
-//                        "        comment = comment,\n" +
-//                        "        time = time,\n" +
-//                        "        status = status,\n" +
-//                        "        article_id = article_id;\n" +
-//                        "\n" +
-//                        "    IF @@ROW_COUNT = 0 THEN\n" +
-//                        "        SET new_id = LAST_INSERT_ID();\n" +
-//                        "    ELSE\n" +
-//                        "        SET new_id = (SELECT id FROM COMMENTS WHERE email = email AND comment = comment AND time = time AND status = status AND article_id = article_id);\n" +
-//                        "    END IF;\n" +
-//                        "\n" +
-//                        "    SELECT new_id;\n" +
-//                        "END;\n" +
-//                        "", comment.getEmail(), comment.getComment(), comment.getArticle_id());
                 return handle.execute("INSERT INTO COMMENTS (email, comment, article_id) VALUES (?, ?, ?)", comment.getEmail(), comment.getComment(), comment.getArticle_id());
             } catch (Exception e) {
                 if (e instanceof SQLIntegrityConstraintViolationException) {
@@ -90,8 +61,10 @@ public class DAO_Comment implements IDAO<Comment> {
     }
 
     public Collection<Comment> selectAllByArticleId(int article_id) {
-        return Jdbi.create(HikariCP.getDataSource()).withHandle(handle -> {
-            return handle.createQuery("SELECT * FROM COMMENTS WHERE article_id = ?")
+        return Jdbi.create(HikariCP.getDataSource())
+                .registerRowMapper(Comment.class, new CommentMapper())
+                .withHandle(handle -> {
+            return handle.createQuery("SELECT * FROM COMMENTS WHERE article_id = ? ORDER BY time DESC")
                     .bind(0, article_id)
                     .mapTo(Comment.class)
                     .list();

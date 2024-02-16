@@ -40,7 +40,30 @@ public class Document extends HttpServlet {
             case "load-comment":
                 loadComment(req, resp);
                 break;
+            case "insert-comment":
+                insertComment(req, resp);
+                break;
         }
+    }
+
+    private void insertComment(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        System.out.println("Insert Comment");
+        String article_id = req.getParameter("article_id"),
+                email = req.getParameter("email"),
+                cmt = req.getParameter("comment");
+        boolean error = false;
+
+        Comment comment = new Comment();
+        comment.setEmail(email);
+        comment.setArticle_id(article_id);
+        comment.setComment(cmt);
+        if (DAO_Comment.getInstance().insert(comment)<=0) {
+            error =true;
+        }
+        PrintWriter out = new PrintWriter(resp.getOutputStream());
+        out.println(!error);
+        out.close();
+        System.out.println("Finish");
     }
 
     private void loadComment(HttpServletRequest req, HttpServletResponse resp) throws IOException {
