@@ -85,7 +85,7 @@
         <%--Comment--%>
         <div id="comment" class="col-lg-8 col-12 my-5" id="support-more">
             <div>
-                <h5 class="border-start border-4 border-danger ps-2">Comment (0)</h5>
+                <h5 id="total-comment" class="border-start border-4 border-danger ps-2 d-inline" data-bs-toggle="tooltip" data-bs-title="This post has 5 comments. We hide 2 comments because they violated our rules on hate speech and spam."></h5>
                 <%--Insert comment--%>
                 <form id="insert-comment" class="border p-3 border-danger rounded-2 my-2">
                     <div class="form-floating mb-3">
@@ -104,22 +104,7 @@
                 </form>
                 <%--Load comment from orther--%>
                 <div id="order-comment" class="my-2">
-<%--                    <div class="block-comment my-3 position-relative border-top">--%>
-<%--                        <p><b>username</b></p>--%>
-<%--                        <p class="w-75">this is a comment</p>--%>
-<%--                        <div class="position-absolute top-0 end-0 d-flex align-items-center">--%>
-<%--                            <p class="mb-0">11/02/2024 07:54 GMT+7</p>--%>
-<%--                            <input type="hidden" name="comment_id" value="1">--%>
-<%--                            <c:if test="${not empty user}">--%>
-<%--                                <button class="btn btn-sm border-0" type="button">--%>
-<%--                                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24">--%>
-<%--                                        <path fill="currentColor"--%>
-<%--                                              d="M2 5.27L3.28 4L20 20.72L18.73 22l-3.08-3.08c-1.15.38-2.37.58-3.65.58c-5 0-9.27-3.11-11-7.5c.69-1.76 1.79-3.31 3.19-4.54zM12 9a3 3 0 0 1 3 3a3 3 0 0 1-.17 1L11 9.17A3 3 0 0 1 12 9m0-4.5c5 0 9.27 3.11 11 7.5a11.79 11.79 0 0 1-4 5.19l-1.42-1.43A9.862 9.862 0 0 0 20.82 12A9.821 9.821 0 0 0 12 6.5c-1.09 0-2.16.18-3.16.5L7.3 5.47c1.44-.62 3.03-.97 4.7-.97M3.18 12A9.821 9.821 0 0 0 12 17.5c.69 0 1.37-.07 2-.21L11.72 15A3.064 3.064 0 0 1 9 12.28L5.6 8.87c-.99.85-1.82 1.91-2.42 3.13"/>--%>
-<%--                                    </svg>--%>
-<%--                                </button>--%>
-<%--                            </c:if>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
+                    <%--Insert comment to here--%>
                 </div>
             </div>
         </div>
@@ -141,24 +126,8 @@
             $(this).attr('data-bs-title', text);
         });
 
-        $('div.block-comment button').click(function () {
-            const content = $(this).closest('div.block-comment').find('input[type=hidden]').val()
-            console.log(content)
-            $.ajax({
-                url: "document",
-                type: "POST",
-                data: {
-                    action: "delete",
-                    content_id: content
-                },
-                success: function (data) {
-
-                },
-                error: function () {
-
-                }
-            })
-        })
+        // $('div.block-comment button').click(hideComment())
+        $(document).on('click', 'div#order-comment button', hideComment)
 
         // Khởi tạo tooltip
         $('[data-bs-toggle="tooltip"]').tooltip();
@@ -277,13 +246,15 @@
                 $('div#order-comment').empty()
 
                 let comments = JSON.parse(data)
+                let total = 0;
                 comments.forEach((cmt, index) => {
-                    let commentHtml = `<div class="block-comment my-3 position-relative border-top">
+                    if (cmt.status == 1) {
+                        let commentHtml = `<div class="block-comment my-3 position-relative border-top">
                                     <p><b>` + cmt.email + `</b></p>
                                     <p class="w-75">` + cmt.comment + `</p>
                                     <div class="position-absolute top-0 end-0 d-flex align-items-center">
                                         <p class="mb-0">` + cmt.time + `</p>
-                                        <input type="hidden" value="` + cmt.article_id + `">
+                                        <input type="hidden" value="` + cmt.id + `">
                                         <c:if test="${not empty user}">
                                             <button class="btn btn-sm border-0" type="button">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24">
@@ -294,11 +265,38 @@
                                         </c:if>
                                     </div>
                                 </div>`;
-                    $('#order-comment').append(commentHtml);
+                        $('#order-comment').append(commentHtml);
+                    }
+                    total++;
                 })
+                $('h5#total-comment').text('Comments (' + total + ')')
             },
             error: function (xhr) {
                 console.error(xhr)
+            }
+        })
+    }
+
+    function hideComment() {
+        const comment_id = $(this).closest('div.block-comment').find('input[type=hidden]').val()
+        console.log(comment_id)
+        $.ajax({
+            url: "document",
+            type: "get",
+            data: {
+                action: "hide-comment",
+                comment_id: comment_id
+            },
+            success: function (data) {
+                if (data) {
+                    alert("Comment hidden successfully!");
+                    loadComment()
+                }
+                else alert("An error occurred while hiding the comment. Please try again.");
+            },
+            error: function (xhr) {
+                console.error(xhr)
+                alert("Could not hide comment. Please check your internet connection and try again.");
             }
         })
     }

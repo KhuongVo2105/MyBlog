@@ -57,7 +57,9 @@ public class DAO_Comment implements IDAO<Comment> {
 
     @Override
     public int delete(Comment comment) {
-        return 0;
+        return Jdbi.create(HikariCP.getDataSource()).withHandle(handle -> {
+            return handle.execute("UPDATE COMMENTS SET status = 0 WHERE id = ?", comment.getId());
+        });
     }
 
     public Collection<Comment> selectAllByArticleId(int article_id) {

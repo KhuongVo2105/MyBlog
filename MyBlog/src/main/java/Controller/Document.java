@@ -43,7 +43,48 @@ public class Document extends HttpServlet {
             case "insert-comment":
                 insertComment(req, resp);
                 break;
+            case "hide-comment":
+                hideComment(req, resp);
+                break;
         }
+    }
+
+    private void hideComment(HttpServletRequest req, HttpServletResponse resp) {
+        System.out.println("Hide Comment");
+        String comment_id = req.getParameter("comment_id");
+        System.out.println("comment_id: " + comment_id);
+
+        boolean error = false; // Initialize error flag
+
+        try {
+            int id = Integer.parseInt(comment_id);
+            Comment comment = new Comment();
+            comment.setId(id);
+
+            if (DAO_Comment.getInstance().delete(comment) <= 0) {
+                error = true;
+            }
+        } catch (NumberFormatException e) {
+            error = true;
+            e.printStackTrace();
+        } catch (Exception e) {
+            error = true;
+            e.printStackTrace();
+        } finally {
+            PrintWriter out = null;
+            try {
+                out = new PrintWriter(resp.getOutputStream());
+                out.println(error); // Write true for error, false for success
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            } finally {
+                if (out != null) {
+                    out.close();
+                }
+            }
+        }
+
+        System.out.println("Finish");
     }
 
     private void insertComment(HttpServletRequest req, HttpServletResponse resp) throws IOException {
@@ -57,8 +98,8 @@ public class Document extends HttpServlet {
         comment.setEmail(email);
         comment.setArticle_id(article_id);
         comment.setComment(cmt);
-        if (DAO_Comment.getInstance().insert(comment)<=0) {
-            error =true;
+        if (DAO_Comment.getInstance().insert(comment) <= 0) {
+            error = true;
         }
         PrintWriter out = new PrintWriter(resp.getOutputStream());
         out.println(!error);
