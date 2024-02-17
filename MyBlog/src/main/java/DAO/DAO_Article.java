@@ -80,6 +80,10 @@ public class DAO_Article implements IDAO<Article> {
                             .list();
                 });
     }
+
+    public Collection<Article> search(String keyword) {
+        
+    }
 }
 
 class ArticleMapper implements RowMapper<Article> {
