@@ -42,6 +42,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Application.DAO_Article.executor&quot;: &quot;Run&quot;,
     &quot;Application.DAO_Social.executor&quot;: &quot;Run&quot;,
     &quot;Application.DAO_User (1).executor&quot;: &quot;Run&quot;,
     &quot;Application.DAO_User (2).executor&quot;: &quot;Run&quot;,
@@ -75,8 +76,8 @@
     </key>
   </component>
   <component name="RunManager" selected="Smart Tomcat.MyBlog">
-    <configuration name="DAO_Social" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="DAO.DAO_Social" />
+    <configuration name="DAO_Article" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="DAO.DAO_Article" />
       <module name="MyBlog" />
       <extension name="coverage">
         <pattern>
@@ -155,11 +156,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.DAO_Article" />
         <item itemvalue="JavaScript Debug.1.html" />
         <item itemvalue="Application.DAO_User (2)" />
         <item itemvalue="Application.DAO_User" />
         <item itemvalue="Application.DAO_User (1)" />
-        <item itemvalue="Application.DAO_Social" />
       </list>
     </recent_temporary>
   </component>
@@ -197,7 +198,8 @@
       <workItem from="1708006950686" duration="6660000" />
       <workItem from="1708067914308" duration="10090000" />
       <workItem from="1708088836813" duration="11827000" />
-      <workItem from="1708133662590" duration="649000" />
+      <workItem from="1708133662590" duration="10674000" />
+      <workItem from="1708265929416" duration="8625000" />
     </task>
     <servers />
   </component>

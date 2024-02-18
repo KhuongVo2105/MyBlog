@@ -23,7 +23,8 @@
             </a>
             <ul class="navbar-nav col-lg-6 justify-content-lg-center">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="<%=webUrl%>/" data-href="<%=request.getContextPath()%>/index.jsp">Home</a>
+                    <a class="nav-link" aria-current="page" href="<%=webUrl%>/"
+                       data-href="<%=request.getContextPath()%>/index.jsp">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#" data-href="<%=request.getContextPath()%>/About.jsp">About</a>
@@ -37,17 +38,21 @@
             </ul>
             <div class="d-lg-flex col-lg-3 justify-content-lg-around">
                 <!--Searching bar-->
-                <form class="position-relative d-flex align-items-center mt-3 mb-lg-0 mb-3 mt-lg-0" role="search">
-                    <input class="form-control me-2 rounded-pill" type="search" placeholder="Search"
-                           aria-label="Search">
-                    <button class="position-absolute top-50 end-0 translate-middle-y border-0 bg-light rounded-circle me-3"
-                            type="submit">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 512 512">
-                            <path fill="currentColor"
-                                  d="M456.69 421.39L362.6 327.3a173.81 173.81 0 0 0 34.84-104.58C397.44 126.38 319.06 48 222.72 48S48 126.38 48 222.72s78.38 174.72 174.72 174.72A173.81 173.81 0 0 0 327.3 362.6l94.09 94.09a25 25 0 0 0 35.3-35.3M97.92 222.72a124.8 124.8 0 1 1 124.8 124.8a124.95 124.95 0 0 1-124.8-124.8"></path>
-                        </svg>
-                    </button>
-                </form>
+                <div class="dropdown">
+                    <div class="position-relative d-flex align-items-center mt-3 mb-lg-0 mb-3 mt-lg-0" role="search">
+                        <input id="input-search" class="form-control me-2 rounded-pill" type="search"
+                               placeholder="Search"
+                               aria-label="Search">
+                        <button id="button-search"
+                                class="position-absolute top-50 end-0 translate-middle-y border-0 bg-light rounded-circle me-3"
+                                type="button" data-bs-toggle="modal" data-bs-target="#result">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 512 512">
+                                <path fill="currentColor"
+                                      d="M456.69 421.39L362.6 327.3a173.81 173.81 0 0 0 34.84-104.58C397.44 126.38 319.06 48 222.72 48S48 126.38 48 222.72s78.38 174.72 174.72 174.72A173.81 173.81 0 0 0 327.3 362.6l94.09 94.09a25 25 0 0 0 35.3-35.3M97.92 222.72a124.8 124.8 0 1 1 124.8 124.8a124.95 124.95 0 0 1-124.8-124.8"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
 
                 <!--Donation button-->
                 <%
@@ -111,12 +116,76 @@
         </div>
     </div>
 </div>
+<!--Result searching-->
+<div id="result" class="modal fade" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+<%--                <a href="#">--%>
+<%--                    <div>--%>
+<%--                        <img src="Resources/thumbnail-default.jpg" alt="" srcset="">--%>
+<%--                        <p>Vietnamese spend $3.8M daily on online food orders Vietnamese spend $3.8M daily on online--%>
+<%--                            food orders Vietnamese spend $3.8M daily on online food orders</p>--%>
+<%--                    </div>--%>
+<%--                </a>--%>
+            </div>
+        </div>
+    </div>
+</div>
 <script>
     $(document).ready(function () {
         $('a#logout').click(function () {
             return (confirm("Do you want to log out?"))
         })
+        $('button#button-search').click(search())
     })
+
+    function search() {
+        let words = $('input#input-search').val()
+        if (words.length > 0) {
+            $.ajax({
+                url: "<%=webUrl%>/document",
+                method: "get",
+                data: {
+                    action: "searching",
+                    words: words
+                },
+                success: function (data) {
+                    console.log(data)
+                    let articles = JSON.parse(data)
+                    let body = $('#result div.modal-body')
+                    console.log(articles.length)
+                    if (articles.length > 0) {
+                        articles.forEach((article, index) => {
+                            const e1 = $('<a></a>').attr('href', '<%=webUrl%>/document?action=detail&content_id='+article.id);
+                            const e2 = $('<div></div>');
+                            const e3 = $('<img>').attr("src","<%=webUrl%>/Resources/"+article.thumbnail);
+                            const e4 = $('<p></p>').text(article.title); // Cập nhật nội dung
+
+                            e2.append(e3, e4);
+                            e1.append(e2);
+                            body.append(e1);
+                            if (index < articles.length) {
+                                body.append($('<br>'));
+                            }
+                        });
+                    } else {
+                        const e1 = $('<div></div>'),
+                            e2 = $('<b></b>').text(words),
+                            e3 = $('<p></p>').text(' was not found in any documents')
+
+                        e3.prepend(e2)
+                        e1.append(e3)
+                        body.append(e1)
+                    }
+
+                },
+                error: function (xhr) {
+                    console.error(xhr)
+                }
+            })
+        }
+    }
 
     function currentCheck() {
         let currentPagePath = window.location.pathname;
@@ -131,7 +200,7 @@
             console.log(linkHref)
             // So sánh đường dẫn trang hiện tại với href của từng thẻ `a`
             console.log(currentPagePath.includes(linkHref))
-            if(currentPagePath.includes(linkHref)) $(navLink).addClass('active')
+            if (currentPagePath.includes(linkHref)) $(navLink).addClass('active')
             else $(navLink).removeClass('active')
         });
     }
