@@ -17,6 +17,7 @@ import java.io.PrintWriter;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @MultipartConfig
 @WebServlet(name = "Document", urlPatterns = "/document")
@@ -46,7 +47,28 @@ public class Document extends HttpServlet {
             case "hide-comment":
                 hideComment(req, resp);
                 break;
+            case "searching":
+                searching(req, resp);
+                break;
         }
+    }
+
+    private void searching(HttpServletRequest req, HttpServletResponse resp) {
+        String word = req.getParameter("words");
+        Set<Article> articles = DAO_Article.getInstance().search(word);
+        for (Article article:articles){
+            article.setContent(null);
+        }
+        Gson gson = new Gson();
+        String json = gson.toJson(articles);
+        PrintWriter out = null;
+        try {
+            out = new PrintWriter(resp.getOutputStream());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        out.println(json);
+        out.close();
     }
 
     private void hideComment(HttpServletRequest req, HttpServletResponse resp) {

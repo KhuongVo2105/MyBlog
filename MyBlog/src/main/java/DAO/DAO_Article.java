@@ -8,7 +8,7 @@ import org.jdbi.v3.core.statement.StatementContext;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Collection;
+import java.util.*;
 
 public class DAO_Article implements IDAO<Article> {
     public static DAO_Article getInstance() {
@@ -81,8 +81,66 @@ public class DAO_Article implements IDAO<Article> {
                 });
     }
 
-    public Collection<Article> search(String keyword) {
-        
+    private Collection<String> searchForWord(String word) {
+        return Jdbi.create(HikariCP.getDataSource()).withHandle(handle -> {
+            return handle.createQuery("SELECT id FROM ARTICLES WHERE title LIKE ?")
+                    .bind(0, "%" + word + "%")
+                    .mapTo(String.class)
+                    .list();
+        });
+    }
+
+    private Map<String, Integer> statisticalId(String word) {
+        StringTokenizer tokenizer = new StringTokenizer(word);
+        Map<String, Integer> result = new HashMap<>();
+
+        while (tokenizer.hasMoreTokens()) {
+            String token = tokenizer.nextToken();
+            Collection<String> list = searchForWord(token);
+            for (String s : list) {
+                result.put(s, result.getOrDefault(s, 0) + 1);
+            }
+        }
+        return result;
+    }
+
+    public Set<Article> search(String keyword) {
+        Map<String, Integer> statisticalMap = statisticalId(keyword);
+
+        Set<Article> articles = new TreeSet<>(new Comparator<Article>() {
+            @Override
+            public int compare(Article o1, Article o2) {
+                // So sánh theo mức độ tương thích
+                int compatibilityCompare = Integer.compare(statisticalMap.getOrDefault(String.valueOf(o2.getId()), 0),
+                        statisticalMap.getOrDefault(String.valueOf(o1.getId()), 0));
+                if (compatibilityCompare != 0) {
+                    return compatibilityCompare;
+                }
+                // Nếu mức độ tương thích bằng nhau, so sánh theo thời gian
+                return o2.getTime().compareTo(o1.getTime());
+            }
+        });
+
+        // Thêm các Article vào TreeSet
+        // Lưu ý: Bạn cần thay đổi logic để lấy dữ liệu Article từ database và thêm vào Set ở đây
+        // Lấy danh sách các Article từ cơ sở dữ liệu và thêm vào Set
+        for (Map.Entry<String, Integer> entry : statisticalMap.entrySet()) {
+            String articleId = entry.getKey();
+            int compatibility = entry.getValue();
+            Article article = new Article();
+            article.setId(Integer.parseInt(articleId));
+            // Lấy thông tin chi tiết của Article từ cơ sở dữ liệu
+            Article fullArticle = select(article);
+            if (fullArticle != null) {
+                articles.add(fullArticle);
+            }
+        }
+
+        return articles;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(getInstance().statisticalId("drivers driving").toString());
     }
 }
 
